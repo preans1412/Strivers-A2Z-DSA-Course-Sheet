@@ -1,0 +1,71 @@
+// https://www.codingninjas.com/studio/problems/merge-sort_920442
+
+void merge(vector < int > & arr,int s, int e)
+{
+    int mid= (s+e)/2;
+    int n1=mid-s+1;
+    int n2= e-mid;
+
+    // two arrays
+    int *a=new int[n1];//first array
+    int *b= new int[n2]; // second array
+
+
+     int k=s;
+    for(int i=0;i<n1;i++)
+    {
+        //a[i]=arr[s+i];
+           a[i]=arr[k++];
+    }
+     k=mid+1;
+    for(int i=0;i<n2;i++)
+    {
+        b[i]=arr[k++];
+        //b[i]=arr[mid+1+i];
+    }
+
+
+    int index1=0;
+    int index2=0;
+      k=s;
+    while(index1<n1 && index2<n2)
+    {
+        if(a[index1]<b[index2])
+        {
+            arr[k++]=a[index1++];
+           
+        }
+        else{
+            arr[k++]=b[index2++];
+        }
+    }
+    while(index1<n1)
+    {
+         arr[k++]=a[index1++];
+           
+    }
+     while(index2<n2)
+    {
+         arr[k++]=b[index2++];
+    }
+    
+
+}
+void MergeSort(vector < int > & arr,int s, int e)
+{
+    //base case
+    if(s>=e)
+    {
+        return;
+    }
+   int mid= (s+e)/2;
+    MergeSort(arr,s,mid);
+    MergeSort(arr,mid+1, e);
+    merge(arr,s,e);
+}
+
+
+void mergeSort(vector < int > & arr, int n) {
+   MergeSort(arr,0,n-1);
+   
+}
