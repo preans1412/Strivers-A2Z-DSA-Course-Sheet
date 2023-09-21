@@ -1,0 +1,26 @@
+Left rotate an array by D places
+
+vector<int> rotateArray(vector<int>arr, int k) 
+{
+    vector<int> v;
+
+      int n=arr.size();
+      for(int i=0;i<n;i++)
+      {
+          v.push_back(arr[i]);
+      }
+        k %= n; // Ensure k is within the range [0, n)
+      
+       // Reverse the entire array
+        reverse(v.begin(),v.end()); 
+        
+        // Reverse the first n-k elements
+        reverse(v.begin(),v.begin()+n-k);
+
+         // Reverse the remaining k elements
+        reverse(v.begin()+n-k,v.end());
+
+        
+
+        return v;
+}
