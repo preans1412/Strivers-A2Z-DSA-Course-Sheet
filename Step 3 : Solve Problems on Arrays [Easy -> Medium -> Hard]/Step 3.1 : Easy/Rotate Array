@@ -1,0 +1,21 @@
+189. Rotate Array
+
+
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) 
+    {
+        int n=nums.size();
+        k %= n; // Ensure k is within the range [0, n)
+        //We first calculate k %= n to ensure that k is within the range [0, n). This is because rotating an array by k steps is equivalent to rotating it by k % n steps when k can be greater than n.
+
+ // Reverse the first n-k elements
+        reverse(nums.begin(),nums.begin()+n-k);
+
+         // Reverse the remaining k elements
+        reverse(nums.begin()+n-k,nums.end());
+
+         // Reverse the entire array
+        reverse(nums.begin(),nums.end());  
+    }
+};
