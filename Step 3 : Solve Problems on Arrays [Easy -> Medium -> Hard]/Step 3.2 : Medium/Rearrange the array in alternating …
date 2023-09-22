@@ -1,0 +1,128 @@
+2149. Rearrange Array Elements by Sign
+//brute 
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) 
+    {
+       int n=nums.size();
+
+       vector<int> v;
+       vector<int> pos;
+       vector<int>neg;
+       for(int i=0;i<n;i++)
+       {
+           if(nums[i]>=0)
+           {
+               pos.push_back(nums[i]);
+           }
+           else{
+                {
+               neg.push_back(nums[i]);
+           }
+           }
+       }    
+      
+
+       for(int i=0;i<n/2;i++)
+       {
+           v.push_back(pos[i]);
+           v.push_back(neg[i]); 
+       }
+        return v;
+    }
+};
+
+//optimal
+
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) 
+    {
+       int n=nums.size();
+       vector<int> v(n,0);
+       int posIndex=0;
+       int negIndex=1;
+
+       for(int i=0;i<n;i++)
+       {
+           if(nums[i]<0)
+           {
+             v[negIndex]=nums[i];
+             negIndex+=2;
+           }
+           else{
+               v[posIndex]=nums[i];
+               posIndex+=2;
+           }
+       }
+       return v;
+
+    }
+};
+
+
+
+
+
+// CODING NINJAS: Alternate Numbers
+
+vector<int> alternateNumbers(vector<int>&a)
+ {
+      int n=a.size();
+
+       vector<int> v;
+       vector<int> pos;
+       vector<int>neg;
+       for(int i=0;i<n;i++)
+       {
+           if(a[i]>=0)
+           {
+               pos.push_back(a[i]);
+           }
+           else{
+             neg.push_back(a[i]);
+           }
+       }    
+        
+      if(pos.size()==neg.size())
+      {
+           for(int i=0;i<n/2;i++)
+       {
+           v.push_back(pos[i]);
+           v.push_back(neg[i]); 
+       }
+      }
+      else if(pos.size()>neg.size())
+      {
+        for(int i=0;i<neg.size();i++)
+       {
+           v.push_back(pos[i]);
+           v.push_back(neg[i]); 
+       }
+        for(int i=neg.size();i<pos.size();i++)
+       {
+           v.push_back(pos[i]);
+       }
+
+      }
+      else{
+          for(int i=0;i<pos.size();i++)
+       {
+           v.push_back(pos[i]);
+           v.push_back(neg[i]); 
+       }
+        for(int i=pos.size();i<neg.size();i++)
+       {
+           v.push_back(neg[i]);
+       }
+      }
+          
+       
+        return v;
+ 
+ }
+
+
+
+
+
