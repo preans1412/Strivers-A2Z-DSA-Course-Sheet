@@ -1,0 +1,50 @@
+237. Delete Node in a Linked List
+
+
+
+class Solution {
+public:
+    void deleteNode(ListNode* nodeToDelete) 
+    {
+       ListNode* nextNode = nodeToDelete->next;
+    nodeToDelete->val = nextNode->val;
+
+    // Update the current node's next pointer to skip the next node
+    nodeToDelete->next = nextNode->next;
+
+    // Delete the next node
+    delete nextNode;
+
+
+    }
+};
+
+/*{
+        node->val = node->next->val;
+        node->next = node->next->next;
+
+        //5=1;
+        //1=9;
+        }*/
+
+/*
+   ListNode* temp = new ListNode;
+      temp= node->val->next;
+     int c;
+     while(node->next!=null)
+     {
+        c++;
+        if(node==5)
+        break;
+     }
+     for(int i=1;i<=c;i++)
+     {
+         when(i==c)
+         {
+            node->next=temp;
+         }
+     }
+     return temp;
+
+    }*/
+    
