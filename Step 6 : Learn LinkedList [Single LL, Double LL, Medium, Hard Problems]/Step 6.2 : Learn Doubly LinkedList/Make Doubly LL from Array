@@ -1,0 +1,22 @@
+
+
+Node* constructDLL(vector<int>& arr) 
+{
+     Node* head = nullptr;
+    Node* tail = nullptr;
+    
+
+    for (int i = 0; i < arr.size(); ++i) {
+        Node* newNode = new Node(arr[i]);
+        if (head == nullptr) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail->next = newNode;
+            newNode->prev=tail; // Update the prev pointer
+            tail = newNode;
+        }
+    }
+
+    return head;
+}
