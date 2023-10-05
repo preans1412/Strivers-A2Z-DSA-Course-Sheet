@@ -1,0 +1,22 @@
+
+Node * deleteLastNode(Node *head) {
+    // Write your code here
+       // If the head is empty or has only one node
+    if (head == nullptr || head->next == nullptr) {
+        delete head;
+        return nullptr; // Return nullptr to indicate an empty head
+    }
+
+   
+    // Traverse the head to find the second-to-last node
+     Node* curr = head;
+    while (curr->next->next != nullptr) {
+        curr = curr->next;
+    }
+
+    // Delete the last node and update the second-to-last node's next pointer
+    delete curr->next;
+    curr->next = nullptr;
+
+    return head; 
+}
