@@ -1,0 +1,21 @@
+
+Node * insertAtTail(Node *head, int k) 
+{
+   Node * newNode =new Node(k);
+
+    if (head == nullptr) {
+        // If the list is empty, make the new node the head
+        return newNode;
+    }
+
+   Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    
+    temp->next=newNode;
+     newNode->prev=temp;
+    temp=newNode;
+    return head;
+}
