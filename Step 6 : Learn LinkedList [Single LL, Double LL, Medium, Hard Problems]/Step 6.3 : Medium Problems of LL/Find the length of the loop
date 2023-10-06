@@ -1,0 +1,29 @@
+int length(Node* slow)
+{
+    Node *temp=slow;
+    int cnt=1;
+    while(temp->next!=slow)
+    {
+      cnt++;
+      temp=temp->next;
+    }
+    return cnt;
+}
+
+int lengthOfLoop(Node *head) {
+    Node *slow = head;
+    Node *fast = head;
+    int loopLength = 0;
+
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) 
+        {
+            // Loop detected, now calculate its length
+            return length(slow);
+        }
+    }
+
+    return 0; // No loop found
+}
