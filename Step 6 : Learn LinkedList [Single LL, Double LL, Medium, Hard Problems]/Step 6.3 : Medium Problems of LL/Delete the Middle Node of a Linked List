@@ -1,0 +1,24 @@
+
+
+Node* deleteMiddle(Node* head)
+{
+     if(head->next==NULL){
+               return NULL;
+           }
+     Node * slow=head;
+    Node * fast=head;
+    Node*prev =head;
+
+    while(fast!=NULL && fast->next!=NULL)
+    {
+        if(slow!=head)
+        {
+            prev=prev->next;
+        }
+        slow=slow->next;
+        fast=fast->next->next; 
+    }
+    prev->next=slow->next;
+    return head;
+    
+}
