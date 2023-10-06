@@ -1,0 +1,21 @@
+void reverse(Node* &head,Node *prev,Node *curr)
+{
+    //base case
+    while(curr==NULL)
+    {
+        head=prev;
+        return;
+    }
+
+    Node* n=curr->next;
+    reverse(head,curr,n);
+    curr->next=prev;
+
+}
+Node* reverseLinkedList(Node *head)
+{
+
+         Node * prev=NULL, *curr=head;
+         reverse(head, prev, curr);
+         return head;
+}
